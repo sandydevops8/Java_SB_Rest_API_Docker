@@ -40,6 +40,12 @@ pipeline {
                 }
             }
         }
+
+        stage(' Deploy Image from DockerHub to Kubernetes Cluster , Here single node Minikube'){
+             steps{
+                             
+             }
+        }
         
     }
 }
