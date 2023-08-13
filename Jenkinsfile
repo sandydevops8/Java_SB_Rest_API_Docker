@@ -43,7 +43,10 @@ pipeline {
 
         stage(' Deploy Image from DockerHub to Kubernetes Cluster , Here single node Minikube'){
              steps{
-                 kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'kubec_config')                 
+                 //kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'kubec_config')  
+                 withCredentials([kubeconfigFile(credentialsId: 'acs-ssh-folder', variable: 'KUBECONFIG')]) {
+                    sh '''cat $KUBECONFIG'''
+                    }
              }
         }
         
