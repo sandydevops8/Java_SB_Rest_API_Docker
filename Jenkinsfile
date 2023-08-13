@@ -45,7 +45,7 @@ pipeline {
              steps{
                  //kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'kubec_config')  
                  withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube_config', namespace: '', serverUrl: '']]) {
-                    sh "kubectl apply -f deploymentservice.yaml"
+                    sh "minikube kubectl apply -f deploymentservice.yaml"
                     }
              }
         }
