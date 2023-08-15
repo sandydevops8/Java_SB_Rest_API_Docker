@@ -1,5 +1,6 @@
 //defining variable
 def ver=1.0
+def build_no=${BUILD_NUMBER}
 
 pipeline {
     agent any
@@ -28,7 +29,7 @@ pipeline {
         stage(' build an image from jar'){
             steps{
                 script{
-                    sh 'docker build -t sandydevops8/spring-boot-docker .'
+                    sh 'docker build -t sandydevops8/spring-boot-docker:latest sandydevops8/spring-boot-docker:${build_no}'
                 }
             }
         }
@@ -38,7 +39,7 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u sandydevops8 -p ${dockerhubpwd}'
-                    sh 'docker push sandydevops8/spring-boot-docker'
+                    sh 'docker push sandydevops8/spring-boot-docker:${build_no}'
                 }
                 }
             }
