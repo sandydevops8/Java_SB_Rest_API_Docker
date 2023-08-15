@@ -41,7 +41,7 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u sandydevops8 -p ${dockerhubpwd}'
-                    sh 'docker push sandydevops8/spring-boot-docker:${build_no}'
+                    sh "docker push sandydevops8/spring-boot-docker:${build_no}"
                 }
                 }
             }
