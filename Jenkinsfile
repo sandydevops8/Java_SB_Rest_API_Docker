@@ -30,7 +30,8 @@ pipeline {
         stage(' build an image from jar'){
             steps{
                 script{
-                    sh "docker build -t sandydevops8/spring-boot-docker:latest sandydevops8/spring-boot-docker:${build_no}"
+                    sh "docker build -t sandydevops8/spring-boot-docker:latest ."
+                    sh "docker tag sandydevops8/spring-boot-docker:latest sandydevops8/spring-boot-docker:${build_no}"
                 }
             }
         }
