@@ -1,6 +1,6 @@
 //defining variable
 def ver=1.0
-def build_no="${BUILD_NUMBER}"
+def build_no="${env.BUILD_NUMBER}"
 
 pipeline {
     agent any
@@ -10,6 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Hello World ${ver}"  //using variable, use " " to get value of var with def  
+                echo "Build no is ${build_no}"
             }
         }
         
@@ -29,7 +30,7 @@ pipeline {
         stage(' build an image from jar'){
             steps{
                 script{
-                    sh 'docker build -t sandydevops8/spring-boot-docker:latest sandydevops8/spring-boot-docker:${build_no}'
+                    sh "docker build -t sandydevops8/spring-boot-docker:latest sandydevops8/spring-boot-docker:${build_no}"
                 }
             }
         }
