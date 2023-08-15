@@ -9,7 +9,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                echo 'Hello World ${ver}'  //using variable 
+                echo "Hello World ${ver}"  //using variable, use " " to get value of var with def  
             }
         }
         
