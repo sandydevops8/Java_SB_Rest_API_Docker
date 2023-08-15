@@ -1,6 +1,6 @@
 //defining variable
 def ver=1.0
-def build_no=${BUILD_NUMBER}
+def build_no="${BUILD_NUMBER}"
 
 pipeline {
     agent any
