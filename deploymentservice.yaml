@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: spring-boot-docker
-          image: sandydevops8/spring-boot-docker # Image that will be used to containers in the cluster
+          image: sandydevops8/spring-boot-docker # Image that will be used to containers in the cluster GITHUB
+          #image: 810426675067.dkr.ecr.us-east-1.amazonaws.com/springboot-eks:latest #ECR sandydevops8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
@@ -32,4 +33,5 @@ spec:
     - protocol: "TCP"
       port: 8080 # The port that the service is running on in the cluster
       targetPort: 8080 # The port exposed by the service
-  type: NodePort # type of the service.
+  type: NodePort # type of the service. on local Kubernetes machine for testing
+  #type: LoadBalancer #deploying in AWS

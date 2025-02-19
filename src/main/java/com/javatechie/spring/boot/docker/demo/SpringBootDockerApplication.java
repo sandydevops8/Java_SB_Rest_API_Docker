@@ -18,4 +18,14 @@ public class SpringBootDockerApplication {
 		SpringApplication.run(SpringBootDockerApplication.class, args);
 	}
 
+	@GetMapping("/")
+	public String getRoot() {
+		return "Root  of Spring Boot Application !!";
+	}
+
+	@GetMapping("/api")
+	public String getApi() {
+		return "Api Called , call  /api/users to get  list of users";
+	}
+
 }
